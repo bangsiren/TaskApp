@@ -1,0 +1,43 @@
+
+<div class="input">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="box">
+  <div class="container-4">
+    <input type="search" id="search" placeholder="Search..." [(ngModel)]="title" (ngModelChange)="search()" />
+    <button class="icon"><i class="fa fa-search"></i></button>
+  </div>
+</div>
+</div>
+
+<div *ngFor="let task of tasks"   class="card-list">
+  <div class="media row  " [class.third-media]="task.expire">
+    <div class="d-md-flex d-sm-block d-xs-block">
+      <div class="col-md-4 col-sm-12 img-bloc col-lg-4 img-box">
+        <img class="list-images img-fluid" src="http://localhost:3000{{task.image}}" alt="">
+     </div>
+     <div class="col lg-7 col-md-7 col-sm-12">
+        <div>
+          <p><small class="exp">Exp:</small><small class="exp-date">{{task.dateTime.startDate}}</small></p>
+          <h5 class="mt-0 mb-1 title mt-3">{{task.title}}</h5>
+          <p class="mt-2">{{task.description}}</p>
+            <div class="row">
+              <div class="col-md-6">
+                <p class=" minutes-ago">Added: {{task.diff }}</p>
+               <!-- <span class="date mt-6">Added:</span> -->
+              </div>
+              <div class="col-md-6">
+                <p *ngIf="task.updiff !== 'Invalid date'" class=" minutes-ago">Updated: {{task.updiff}}</p>
+              </div>
+            </div>
+        </div>
+     </div>
+     <div class="col-lg-1 col-md-1 col6-sm-12  ">
+       <i class="fa fa-check-circle fa-2x mt-1 " [class.float-icon]="task.isActive" [class.check-icon]="!task.isActive" (click)="onCompleted(task._id, task.isActive)" aria-hidden="true" ></i>
+       <i class="fa fa-exclamation-circle fa-2x exclamation-icon" *ngIf="task.expire"  aria-hidden="true"></i>
+       <i (click)="delete(task._id)"  class="fa fa-trash delete-icon fa-1x" aria-hidden="true"></i>
+      <i (click)="toUpdate(task)" class="fa fa-pencil-square-o  edit-icon fa-1x" aria-hidden="true" routerLink=""></i>
+     </div>
+    </div>
+  </div>
+
+</div>

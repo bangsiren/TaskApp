@@ -1,0 +1,49 @@
+
+
+.contain {
+  background-image: url('../../../assets/task-main-image.svg');
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+}
+.form-section {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 500px;
+  margin-bottom: 120px;
+}
+.style-container {
+  position: relative;
+}
+
+.list-scroll {
+  height: 53vh;
+  overflow: hidden;
+}
+.list-section {
+  height: 53vh;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 0 2rem;
+  width: 105%;
+}
+
+@media only screen and (max-width: 750px) {
+  .form-section {
+    border: 1px solid  white;
+    border-radius: 5px;
+    height: 500px;
+    margin-top: 38em;
+  }
+  .list-scroll {
+    height: 100vh;
+    overflow-y: scroll;
+  }
+  .contain {
+    overflow-y: scroll;
+  }
+}

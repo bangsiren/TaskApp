@@ -1,0 +1,36 @@
+<div class="centered-content">
+  <div class="task-manager-container">
+      <h3 class="register-heading">Registration Form</h3>
+     <form method="POST" accept="/register" autocomplete="off" enctype="multipart/form-data" [formGroup]="userForm"  (submit)="submit()">
+         <div class="form-group">
+           <label for="name">Name</label>
+           <input type="text" class="form-control" placeholder="Enter Name" [(ngModel)]="name" name="name" formControlName="name">
+           <div *ngIf="userForm.get('name').invalid && userForm.get('name').touched">
+            <small *ngIf="userForm.get('name').errors?.required" class="text-danger">Name is required</small>
+        </div>
+         </div>
+            <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" placeholder="Enter Email" [(ngModel)]="email" name="email" formControlName="email">
+          <div *ngIf="userForm.get('email').invalid && userForm.get('email').touched">
+            <small *ngIf="userForm.get('email').errors?.required" class="text-danger">Email is required</small>
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" placeholder="Enter Password" [(ngModel)]="password" name="password" formControlName="password">
+          <div *ngIf="userForm.get('password').invalid && userForm.get('password').touched">
+            <small *ngIf="userForm.get('password').errors?.required" class="text-danger">Password is required</small>
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="comfirmPassword">Comfirm</label>
+          <input type="password" class="form-control" placeholder="Comfirm Password" [(ngModel)]="confirm" name="conform" formControlName="confirm">
+          <div *ngIf="userForm.get('confirm').invalid && userForm.get('confirm').touched">
+            <small *ngIf="userForm.get('confirm').errors?.required" class="text-danger">confirm Password is required</small>
+        </div>
+        </div>
+        <button type="submit" class="btn btn-success register-btn">register</button>
+     </form>
+  </div>
+</div>

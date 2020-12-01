@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "taskApp"
+    }
+  },
+  "defaultProject": "taskApp",
+  "cli": {
+    "analytics": "759811da-7fbd-4f66-88de-962e24ab1c3e"
+  }
 }

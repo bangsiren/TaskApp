@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: 'Dosis', sans-serif;
+}
+.task-manager-container {
+  min-height: 200px;
+  width: 100%;
+  margin-top: 7em;
+  max-width: 530PX;
+  background: #546363;
+  border-radius: 5px;
+  padding: 114px;
+
+}
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.register-heading {
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.register-btn {
+   float: right;
+}
+label{
+  color: #4dabab;
+  font-size: 20px;
+  font-weight: bold;
+}

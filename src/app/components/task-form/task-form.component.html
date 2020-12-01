@@ -1,0 +1,50 @@
+<div class="task-form">
+  <form method="POST" accept="/tasks" autocomplete="off" enctype="multipart/form-data" [formGroup]="taskForm"  (submit)="submit()">
+    <div class="form-group mt-3">
+      <input maxlength="100" type="text" [(ngModel)]="formInfo.title" (keyup)="onTiltePress($event)" placeholder="Title" formControlName="title"  class="form-control">
+      <small class="max-desc">{{minTitle}}/100max</small>
+      <!-- <span [class.d-none]="taskForm.get('title').valid || taskForm.get('title').untouched" class="text-danger">Title is required</span> -->
+      <div *ngIf="taskForm.get('title').invalid && taskForm.get('title').touched">
+          <small *ngIf="taskForm.get('title').errors?.required" class="text-danger">Title is required</small>
+          <small *ngIf="taskForm.get('title').errors?.maxlength.minlength" class="text-danger">Title has a min cength of 2 caracter and max of 100 caracters</small>
+      </div>
+    </div>
+    <div class="form-group mt-4">
+      <textarea [(ngModel)]="formInfo.description" (keyup)="onPress($event)" maxlength="280" formControlName="description" class="form-control"   cols="36" rows="9" placeholder="Description" ></textarea>
+      <span class="max-desc" >{{min}}/280max</span>
+      <div *ngIf="taskForm.get('description').invalid && taskForm.get('description').touched">
+        <small *ngIf="taskForm.get('description').errors?.required" class="text-danger">Description is required</small>
+        <small *ngIf="taskForm.get('description').errors?.maxlength" class="text-danger">Description has a max length of 280 caracters</small>
+        <small *ngIf="taskForm.get('description').errors?.maxlength" class="text-danger">Description has a max length of 280 caracters</small>
+    </div>
+    </div>
+    <div class="custom-file mt-2">
+      <input *ngIf="showAdd; else upimage" formControlName="image"  (change)="imageUpload($event)" name="taskimage" type="file" class="custom-file-input" id="customFileLang" lang="ru">
+      <ng-template #upimage>
+        <input  (change)="imageUpdate($event)" name="taskimage2" type="file" class="custom-file-input" id="customFileLang2" lang="ru">
+      </ng-template>
+      <label class="custom-file-label" for="customFileLang"></label>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-9 col-sm-12">
+        <div class="form-group">
+        <input [(ngModel)]="formInfo.dateTime" placeholder="DD/MM/YYYY HH:mm:ss" class="form-control " formControlName="dateTime" ngxDaterangepickerMd [timePicker]="true" [timePickerSeconds]="true"  [singleDatePicker]="true"
+        [timePickerIncrement]="15" [timePicker24Hour]="true" [locale]="{format: 'DD/MM/YYYY HH:mm:ss', firstDay: 1}"
+        [(ngModel)]="selected" id="date">
+        <div *ngIf="taskForm.get('dateTime').invalid && taskForm.get('dateTime').touched">
+          <small *ngIf="taskForm.get('dateTime').errors?.required" class="text-danger">Date and Time is required</small>
+      </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-12">
+        <button *ngIf="showAdd; else update" type="submit" class="btn btn-block task-btn">Add</button>
+        <ng-template #update>
+            <button (click)="toUpdate()"   class="btn btn-block task-btn ">Update</button>
+        </ng-template>
+      </div>
+    </div>
+    <p>
+  </form>
+
+</div>

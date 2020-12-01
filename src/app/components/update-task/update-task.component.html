@@ -1,0 +1,38 @@
+<div class="update-section">
+  <div class="container">
+    <h1 class="update-title">Update Task</h1>
+    <div class="task-form">
+      <form method="POST" accept="/tasks" autocomplete="off" enctype="multipart/form-data" >
+        <div class="form-group mt-3">
+          <input maxlength="100" type="text"  placeholder="Title" formControlName="title"  class="form-control">
+          <small class="max-desc">/100max</small>
+        </div>
+        <div class="form-group mt-4">
+          <textarea  maxlength="280" formControlName="description" class="form-control"   cols="36" rows="9" placeholder="Description" ></textarea>
+          <span class="max-desc" >280max</span>
+        </div>
+        <div class="custom-file mt-2">
+          <input formControlName="image"  name="taskimage" type="file" class="custom-file-input" id="customFileLang" lang="ru">
+          <label class="custom-file-label" for="customFileLang"></label>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-8 col-sm-12">
+            <div class="form-group">
+            <input placeholder="DD/MM/YYYY HH:mm:ss" class="form-control " formControlName="dateTime" ngxDaterangepickerMd [timePicker]="true" [timePickerSeconds]="true"  [singleDatePicker]="true"
+            [timePickerIncrement]="15" [timePicker24Hour]="true" [locale]="{format: 'DD/MM/YYYY HH:mm:ss', firstDay: 1}"
+            [(ngModel)]="selected" id="date">
+
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-12">
+            <button type="submit" class="btn btn-block task-btn text-white">Submit</button>
+          </div>
+          <div class="col-md-2 col-sm-12">
+            <button type="submit" class="btn btn-block bg-dark text-white " routerLink="../">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
