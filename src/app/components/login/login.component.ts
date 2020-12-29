@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
     console.log('***************HERE++++++')
     this.dataService.loginUser({email: this.email, password: this.password}).subscribe((val: any) => {
       console.log(val)
-      localStorage.setItem('token',val.token)
+     localStorage.setItem('token',val.token);
+      localStorage.setItem('userInfo', val.user.name);
       this._router.navigate(['/home'])
     // window.location.reload();
   });

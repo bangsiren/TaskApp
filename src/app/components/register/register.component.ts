@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../service/data.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,7 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(public dataService: DataService, public fb: FormBuilder) { }
+  constructor(private router: Router, public dataService: DataService, public fb: FormBuilder) { }
   userForm = this.fb.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required]],
@@ -24,7 +25,10 @@ export class RegisterComponent implements OnInit {
   confirm: '';
   submit(){
     this.dataService.createUser({name: this.name, email: this.email, password: this.password, confirm: this.confirm}).subscribe((val) => {
-    window.location.reload();
+    //window.location.reload();
+    this.router.navigate["/login"];
+    console.log(val);
+    
   });
  }
 }

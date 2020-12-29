@@ -56,6 +56,8 @@ export class DataService {
   loggedIn(){
     return !!localStorage.getItem('token')
   }
-
+  logout(){
+   return localStorage.clear()
+  }
 }
 

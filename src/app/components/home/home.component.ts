@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TaskFormComponent } from '../task-form/task-form.component';
+import { DataService } from '../../service/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +11,7 @@ import { TaskFormComponent } from '../task-form/task-form.component';
 export class HomeComponent implements OnInit {
   @ViewChild(TaskFormComponent, { static: false })
   private taskFormComponent: TaskFormComponent;
-  constructor() { }
+  constructor(private dataService: DataService, private router: Router) { }
   username = ''
   ngOnInit(): void {
   }
@@ -19,8 +21,14 @@ export class HomeComponent implements OnInit {
     this.taskFormComponent.newUpdate(e);
   }
   setUsers(e){
-    console.log('This is in the parent')
-    this.username = e[2].name;
+    console.log('This is in the parent');
+    //this.username = e[4].name;
+    this.username = localStorage.getItem('userInfo')
     console.log(e)
+  }
+  onLogout(){
+    this.dataService.logout()
+      this.router.navigate(['login'])
+      console.log('Logout Succesfull')
   }
 }
